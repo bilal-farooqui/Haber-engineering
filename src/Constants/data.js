@@ -25,3 +25,9 @@ export const serviceData = [{
     }
 ]
 
+export const sidebarData = {
+    pfp: require("../assets/profilepic.png"),
+    accountName: "Test User",
+    options: ["Account Information", "Order History", "Order Tracking"]
+}
+

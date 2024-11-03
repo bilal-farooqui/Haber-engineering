@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import { serviceData } from "../Constants/data";
 
+
 const ServicePanel = () => {
   return (
     <Container className="mt-5" style={{ height: "80vh" }}>
