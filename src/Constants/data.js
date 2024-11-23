@@ -31,3 +31,22 @@ export const sidebarData = {
     options: ["Account Information", "Order History", "Order Tracking"]
 }
 
+export const productData = [{
+    title: "Installation",
+    description: "Our technicians expertly install standby generators, ensuring proper integration with your electrical system and compliance with all regulations.",
+    buttonText: "Know More",
+    image: require("../assets/installation.jpg")
+    },
+    {
+        title: "Maintenance",
+        description: "We offer routine maintenance to keep your generator running smoothly, including oil changes and component checks",
+        buttonText: "Know More",
+        image: require("../assets/maintenance.jpg") 
+    },
+    {
+        title: "Inspection",
+    description: "Our thorough inspections ensure your generator is in optimal condition, identifying potential issues before they become problems.",
+    buttonText: "Know More",
+    image: require("../assets/inspection.jpg")
+    }
+]
