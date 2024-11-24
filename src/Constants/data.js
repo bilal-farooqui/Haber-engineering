@@ -50,3 +50,19 @@ export const productData = [{
     image: require("../assets/inspection.jpg")
     }
 ]
+
+export const footerData = [{
+    title: "About US",
+    content: "At Haber Engineering, we are dedicated to providing reliable, high-quality standby generator solutions for both homes and businesses. With years of expertise in the industry, we offer a wide range of products and services designed to ensure uninterrupted power when you need it most. Whether you're looking for expert advice, professional installation, or long-term maintenance, our team is here to help. We pride ourselves on delivering exceptional customer service, ensuring that your energy needs are always met with efficiency and reliability. Trust Haber Engineering to power your world, even when the grid goes down."
+},
+{
+    title: "Contact US",
+    phone: "+92.......",
+    email: "info@haberengineering.com",
+},
+{
+    link1: "Frequently Asked Questions",
+    link2: "Terms and Conditions",
+    link3: "Privacy Policy",
+}
+]
