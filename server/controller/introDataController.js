@@ -1,9 +1,9 @@
-const ProductModel = require('../models/product');
+const IntroDataModel = require('../models/introData');
 
 // Get all data
-const getAllProduct = async (req, res) => {
+const getAllIntroData = async (req, res) => {
     try {
-        const data = await ProductModel.find();
+        const data = await IntroDataModel.find();
         res.json(data);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -11,10 +11,10 @@ const getAllProduct = async (req, res) => {
 };
 
 // Add new data
-const addProduct = async (req, res) => {
-  
+const addIntroData = async (req, res) => {
+    
 
-    const newData = new ProductModel(req.body);
+    const newData = new IntroDataModel(req.body);
 
     try {
         const savedData = await newData.save();
@@ -25,6 +25,6 @@ const addProduct = async (req, res) => {
 };
 
 module.exports = {
-    getAllProduct,
-    addProduct,
+    getAllIntroData,
+    addIntroData,
 };

@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const connectToproductbase = require('./config/database');
+const connectToDatabase = require('./config/database');
 const productRoutes = require('./routes/productRoutes');
+const introDataRoutes = require('./routes/introDataRoutes');
 
 const app = express();
 
@@ -10,10 +11,11 @@ app.use(express.json());
 app.use(cors());
 
 // productbase connection
-connectToproductbase();
+connectToDatabase();
 
 // Routes
 app.use('/product', productRoutes);
+app.use('/introData', introDataRoutes);
 
 // Start server
 const PORT = 3001;
