@@ -66,3 +66,9 @@ export const footerData = [{
     link3: "Privacy Policy",
 }
 ]
+
+export const adminSidebarData = {
+    pfp: require("../assets/profilepic.png"),
+    accountName: "Test User",
+    options: ["Dashboard", "Home", "Products", "Services", "About"]
+}

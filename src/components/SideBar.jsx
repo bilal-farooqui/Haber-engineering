@@ -8,26 +8,25 @@ import {
   Button,
   Row,
 } from "reactstrap";
-import { sidebarData } from "../Constants/data";
-const SideBar = () => {
+const SideBar = ({direction, data}) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
       <NavbarToggler onClick={toggle} />
-      <Offcanvas direction="end" isOpen={isOpen} toggle={toggle}>
+      <Offcanvas direction={direction} isOpen={isOpen} toggle={toggle}>
         <OffcanvasHeader className="border-bottom" toggle={toggle}>
           <img
             className="pe-3"
             style={{ height: "10vh" }}
-            src={sidebarData.pfp}
+            src={data.pfp}
             alt=""
           />
-          {sidebarData.accountName}
+          {data.accountName}
         </OffcanvasHeader>
         <OffcanvasBody>
-          {sidebarData.options.map((option, index) => (
+          {data.options.map((option, index) => (
             <Row className="border-bottom border-dark" key={index}>
               <Button className="m-1" style={{ border: "0px" }} outline>
                 {" "}
