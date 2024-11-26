@@ -2,7 +2,9 @@ export const introData ={
     title:"Find appropriate solutions for your problems.",
     description:"Discover the perfect power solutions for your needs with our extensive range of generator products and expert servicing.",
     buttonText:"Shop Now",
-    image:require("./../assets/intropanelimg.jpg")
+    image:require("./../assets/intropanelimg.jpg"),
+    homeScreenProductDisplay: 3,
+    homeScreenServiceDisplay: 3,
 }
 
 export const serviceData = [{
