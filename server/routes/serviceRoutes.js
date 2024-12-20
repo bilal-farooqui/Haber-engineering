@@ -1,10 +1,8 @@
 const express = require('express');
-const multer = require('multer'); // Import multer
-const { getAllProduct, addProduct, updateProduct } = require('../controller/productController');
+const multer = require('multer');
+const { getAllService, addService, updateService } = require('../controller/serviceController');
 
 const router = express.Router();
-
-// Configure multer to handle file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'uploads/'); // Ensure uploads are saved here
@@ -26,15 +24,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Route for adding a product (with image upload)
-router.post('/', upload.single('image'), addProduct); // 'image' should match the field name in your form
-
-
-router.get('/', getAllProduct);
-// router.post('/', upload.single('image'), addProduct); // Handle image upload for single file
-// router.put('/:id', upload.single('image'), updateProduct); // Handle image upload for single file
-
-// Route for updating a product
-router.put('/:id', updateProduct);
+router.get('/', getAllService);
+router.post('/',upload.single('image'), addService);
+router.put('/:id', updateService);
 
 module.exports = router;

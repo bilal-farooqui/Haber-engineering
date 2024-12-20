@@ -12,30 +12,30 @@ import NavBar from "../components/NavBar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Product = () => {
-  const [productData, setProductData] = useState([]);
+const Service = () => {
+  const [serviceData, setServiceData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [limit] = useState(12); // Set limit to 1 for testing
   const [totalItems, setTotalItems] = useState(0); // Store total count from API
   const navigate = useNavigate();
   // const [datatoSend, setDatatoSend] = useState({});
 
-  const fetchProductData = (page) => {
+  const fetchServiceData = (page) => {
     const start = (page - 1) * limit;
     axios
-      .get(`http://localhost:3001/product?limit=${limit}&start=${start}`)
+      .get(`http://localhost:3001/service?limit=${limit}&start=${start}`)
       .then((res) => {
-        console.log("DATA from API", res.data);
-        setProductData(res.data.data);
+        console.log("DATA from service API", res.data);
+        setServiceData(res.data.data);
         setTotalItems(res.data.totalCount); // Update total count
       })
       .catch((error) => {
-        console.log("Error in Fetch Product API", error);
+        console.log("Error in Fetch Service API", error);
       });
   };
 
   useEffect(() => {
-    fetchProductData(currentPage);
+    fetchServiceData(currentPage);
   }, [currentPage]);
 
   const handleNextPage = () => {
@@ -61,11 +61,11 @@ const Product = () => {
 
         <Row className="border-bottom mx-5">
           <Col>
-            <h1 className="mt-2">Products</h1>
+            <h1 className="mt-2">Services</h1>
           </Col>
         </Row>
 
-        {productData
+        {serviceData
           .reduce((rows, item, index) => {
             if (index % 3 === 0) rows.push([]);
             rows[rows.length - 1].push(item);
@@ -95,7 +95,7 @@ const Product = () => {
                         <Button
                           onClick={() => {
                             navigate("/productDisplay", {
-                              state: { ...mapedData, type: "product" },
+                              state: { ...mapedData, type: "service" },
                             });
                           }}
                           className="align-self-start d-inline"
@@ -138,4 +138,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Service;

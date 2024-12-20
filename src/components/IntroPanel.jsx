@@ -2,8 +2,10 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Button } from "reactstrap";
 // import { data } from "../Constants/data";
+import { useNavigate } from "react-router-dom";
 
 const IntroPanel = ({ data }) => {
+  const navigate = useNavigate();
   return (
     <Container className="mt-5" style={{ height: "80vh" }}>
       <Row className="h-100">
@@ -11,7 +13,14 @@ const IntroPanel = ({ data }) => {
           <h1 className="py-4">{data.title}</h1>
           <p className="w-75">{data.description}</p>
           <div>
-            <Button className="rounded-pill d-inline">{data.buttonText}</Button>
+            <Button
+              onClick={() => {
+                navigate("/product");
+              }}
+              className="rounded-pill d-inline"
+            >
+              {data.buttonText}
+            </Button>
           </div>
         </Col>
         <Col md={6}>

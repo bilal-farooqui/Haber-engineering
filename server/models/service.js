@@ -2,16 +2,16 @@
 
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const serviceSchema = new mongoose.Schema({
     title: { type: String, required: false },
-    price: { type: Number, required: false },
     description: { type: String, required: false },
     buttonText: { type: String, required: false },
     image: { type: String, required: false },
-    sold:{type: Number, required: false}
+    price: {type: Number, required: false},
+    customer: {type: Number, required: false}
     
 });
 
-const ProductModel = mongoose.model('Product', productSchema);
+const ServiceModel = mongoose.model('Service', serviceSchema);
 
-module.exports = ProductModel;
+module.exports = ServiceModel;

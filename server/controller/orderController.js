@@ -1,9 +1,9 @@
-const IntroDataModel = require('../models/introData');
+const OrderModel = require('../models/orderModel');
 
 // Get all data
-const getAllIntroData = async (req, res) => {
+const getOrderData = async (req, res) => {
     try {
-        const data = await IntroDataModel.find();
+        const data = await OrderModel.find();
         res.json(data);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -11,10 +11,10 @@ const getAllIntroData = async (req, res) => {
 };
 
 // Add new data
-const addIntroData = async (req, res) => {
+const addOrderData = async (req, res) => {
     
 
-    const newData = new IntroDataModel(req.body);
+    const newData = new OrderModel(req.body);
 
     try {
         const savedData = await newData.save();
@@ -24,11 +24,11 @@ const addIntroData = async (req, res) => {
     }
 };
 
-const updateIntroData = async (req, res) => {
+const updateOrderData = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const updatedData = await IntroDataModel.findByIdAndUpdate(
+        const updatedData = await OrderModel.findByIdAndUpdate(
             id,                     // ID to find the document
             req.body,               // Data to update
             { new: true, upsert: true } // Return the updated document, create if not found
@@ -41,7 +41,7 @@ const updateIntroData = async (req, res) => {
 };
 
 module.exports = {
-    getAllIntroData,
-    addIntroData,
-    updateIntroData
+    getOrderData,
+    addOrderData,
+    updateOrderData
 };

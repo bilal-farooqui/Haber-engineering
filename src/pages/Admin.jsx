@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import SideBar from "../components/SideBar";
-import { adminSidebarData } from "../Constants/data";
-import { Button, Col, Container, Row, Label } from "reactstrap";
 import SidePanel from "../components/SidePanel";
-import MUITable from "../components/MUITable";
 
 import DashboardContent from "./DashboardContent";
 import HomeContent from "./HomeContent";
+import ProductContent from "./ProductContent";
+import ServiceContent from "./ServiceContent";
 const Admin = () => {
   const [selectedTab, setSelectedTab] = useState("Dashboard");
   return (
@@ -21,14 +19,16 @@ const Admin = () => {
           minHeight: "100vh", // Allows scrolling if content overflows
         }}
       >
-        {selectedTab == "Products" || selectedTab == "Services" ? (
-          <MUITable />
+        {selectedTab == "Products" ? (
+          <ProductContent />
         ) : selectedTab == "Home" ? (
           <HomeContent />
         ) : selectedTab == "About" ? (
           <p>About Page Selected</p>
         ) : selectedTab == "Dashboard" ? (
           <DashboardContent />
+        ) : selectedTab == "Services" ? (
+          <ServiceContent />
         ) : (
           <p>No Page Selected</p>
         )}

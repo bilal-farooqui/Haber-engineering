@@ -1,34 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Container,
-  Form,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  //   ModalTitle,
-  FormGroup,
   Label,
   Input,
   Row,
 } from "reactstrap";
 import IntroPanel from "../components/IntroPanel";
-import { introData } from "../Constants/data";
+import axios from "axios";
 
 const HomeContent = () => {
-  const [data, setData] = useState(introData);
+  const [data, setData] = useState({
+    title: "",
+    description: "",
+    buttonText: "",
+    image: "",
+    homeScreenProductDisplay: 3,
+    homeScreenServiceDisplay: 3,
+  });
   const [modal, setModal] = useState(false);
+  const [apiData, setApiData] = useState({});
 
   const toggle = () => setModal(!modal);
-  console.log("Intro Data", introData);
+
+  const updateIntroData = () => {
+    axios
+      .put(`http://localhost:3001/introData/${data._id}`, data)
+      .then((res) => {
+        console.log("Updated Successfully");
+        setApiData(data);
+        toggle();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const fetchIntroData = () => {
+    axios
+      .get("http://localhost:3001/introData")
+      .then((res) => {
+        console.log("DATA from API", res.data[0]);
+        setData(res.data[0]);
+        setApiData(res.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    fetchIntroData();
+  }, []);
 
   return (
     <Container>
       <Button onClick={toggle}>Customize </Button>
       <IntroPanel data={data} />
       <Modal isOpen={modal} toggle={toggle} size="lg">
-        <ModalHeader closeButton>Customize Home</ModalHeader>
+        <ModalHeader>Customize Home</ModalHeader>
         <ModalBody>
           <div className="row">
             <div className="col-md-6 mb-3">
@@ -85,9 +119,12 @@ const HomeContent = () => {
                   type="number"
                   name="branchName"
                   onChange={(e) => {
-                    setData({ ...data, title: e.target.value });
+                    setData({
+                      ...data,
+                      homeScreenProductDisplay: e.target.value,
+                    });
                   }}
-                  value={data.title}
+                  value={data.homeScreenProductDisplay}
                 />
               </div>
               <div className="col-md-6 mb-3">
@@ -99,9 +136,12 @@ const HomeContent = () => {
                   type="number"
                   name="number"
                   onChange={(e) => {
-                    setData({ ...data, title: e.target.value });
+                    setData({
+                      ...data,
+                      homeScreenServiceDisplay: e.target.value,
+                    });
                   }}
-                  value={data.title}
+                  value={data.homeScreenServiceDisplay}
                 />
               </div>
             </Row>
@@ -113,13 +153,13 @@ const HomeContent = () => {
           <button
             className="btn btn-secondary"
             onClick={() => {
-              setData(introData);
+              setData(apiData);
               toggle();
             }}
           >
             Cancel
           </button>
-          <button className="btn btn-primary" onClick={toggle}>
+          <button className="btn btn-primary" onClick={updateIntroData}>
             Save
           </button>
           {/* <Spinner></Spinner> */}

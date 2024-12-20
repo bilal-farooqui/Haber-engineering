@@ -1,28 +1,19 @@
-import React from 'react'
+import React from "react";
 import MUIDataTable from "mui-datatables";
 
-const MUITable = () => {
-    const columns = ["Name", "Company", "City", "State"];
-    const data = [
-        ["Joe James", "Test Corp", "Yonkers", "NY"],
-        ["John Walsh", "Test Corp", "Hartford", "CT"],
-        ["Bob Herm", "Test Corp", "Tampa", "FL"],
-        ["James Houston", "Test Corp", "Dallas", "TX"],
-       ];
-       
-       const options = {
-         filterType: 'checkbox',
-       };
+const MUITable = ({ columns, data, title }) => {
+  const options = {
+    filterType: "checkbox",
+  };
 
   return (
-   <MUIDataTable 
-   title={"Employee List"}
-   data={data}
-   columns={columns}
-   options={options}
-   
-   />
-  )
-}
+    <MUIDataTable
+      title={title}
+      data={data}
+      columns={columns}
+      options={options}
+    />
+  );
+};
 
-export default MUITable
+export default MUITable;
